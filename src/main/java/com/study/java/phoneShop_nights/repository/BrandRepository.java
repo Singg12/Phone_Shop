@@ -12,3 +12,4 @@ import com.study.java.phoneShop_nights.entity.Brand;
 public interface BrandRepository extends JpaRepository<Brand, Integer>,JpaSpecificationExecutor<Brand>{
     List<Brand> findByNameLike(String name);
 }
+
