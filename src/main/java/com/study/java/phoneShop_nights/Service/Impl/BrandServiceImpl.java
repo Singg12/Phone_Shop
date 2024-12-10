@@ -19,11 +19,14 @@ import com.study.java.phoneShop_nights.repository.BrandRepository;
 import com.study.java.phoneShop_nights.spec.BrandFilter;
 import com.study.java.phoneShop_nights.spec.BrandSpec;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class BrandServiceImpl  implements BrandService{
 
     @Autowired
-    private BrandRepository brandRepository;
+    private final BrandRepository brandRepository;
 
     @Override
     public Brand create(Brand brand) {
@@ -33,7 +36,8 @@ public class BrandServiceImpl  implements BrandService{
 
     @Override
     public Brand getById(Integer id) {
-        return brandRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Brand", id));
+        return brandRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Brand", id));
     }
 
     @Override
